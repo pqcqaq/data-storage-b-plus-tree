@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-#include "BufferPool.h"  // 引入BufferPool
+#include "BufferPool.h"
 
 // 常量定义
 const int PAGE_SIZE = 4096;       // 页面大小
