@@ -11,14 +11,26 @@
 
 #include "BufferPool.h"
 
+// 页面头部信息
+struct PageHeader {
+    int pageId;
+    int parentId;
+    bool isLeaf;
+    int keyCount;
+    int nextLeafId;  // 叶子节点链表
+
+    PageHeader()
+        : pageId(-1), parentId(-1), isLeaf(true), keyCount(0), nextLeafId(-1) {}
+};
+
 // 常量定义
-const int PAGE_SIZE = 4096;       // 页面大小
+const int PAGE_SIZE = 1024 * 4;       // 页面大小
 const int METADATA_SIZE = 16384;  // 元数据大小 16KB
 const int KEY_SIZE = 64;          // 键的固定长度
 const int ROW_ID_SIZE = 32;       // rowId的固定长度
 const int VALUE_SIZE = 128;       // 值的固定长度
-const int MAX_KEYS_PER_PAGE =
-    (PAGE_SIZE - 64) / (KEY_SIZE + ROW_ID_SIZE + VALUE_SIZE);  // 每页最大键数
+const int MAX_KEYS_PER_PAGE = (PAGE_SIZE - sizeof(PageHeader)) / (KEY_SIZE + ROW_ID_SIZE + VALUE_SIZE);
+// 最大每页键数，考虑到页面头部和键值对的大小
 
 // 前向声明
 class BPlusTreeNode;
@@ -51,18 +63,6 @@ struct KeyValue {
     std::string getKey() const { return std::string(key); }
     std::string getRowId() const { return std::string(rowId); }
     std::string getValue() const { return std::string(value); }
-};
-
-// 页面头部信息
-struct PageHeader {
-    int pageId;
-    int parentId;
-    bool isLeaf;
-    int keyCount;
-    int nextLeafId;  // 叶子节点链表
-
-    PageHeader()
-        : pageId(-1), parentId(-1), isLeaf(true), keyCount(0), nextLeafId(-1) {}
 };
 
 // B+树节点

@@ -147,38 +147,3 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
     message(STATUS "Release flags: ${CMAKE_CXX_FLAGS_RELEASE}")
 endif()
-
-# 帮助信息（通过自定义目标）
-add_custom_target(show-help
-    COMMAND ${CMAKE_COMMAND} -E echo "Available targets:"
-    COMMAND ${CMAKE_COMMAND} -E echo "  simple_test      - Build Simple B+Tree test executable"
-    COMMAND ${CMAKE_COMMAND} -E echo "  bplus_tree_test  - Build B+Tree test executable"
-    COMMAND ${CMAKE_COMMAND} -E echo ""
-    COMMAND ${CMAKE_COMMAND} -E echo "Run targets:"
-    COMMAND ${CMAKE_COMMAND} -E echo "  run-simple       - Build and run Simple test (recommended)"
-    COMMAND ${CMAKE_COMMAND} -E echo "  run-btree        - Build and run B+Tree test"
-    COMMAND ${CMAKE_COMMAND} -E echo "  run-all-tests    - Build and run all tests sequentially"
-    COMMAND ${CMAKE_COMMAND} -E echo ""
-    COMMAND ${CMAKE_COMMAND} -E echo "Utility targets:"
-    COMMAND ${CMAKE_COMMAND} -E echo "  clean-db         - Remove database files"
-    COMMAND ${CMAKE_COMMAND} -E echo "  distclean        - Remove all generated files"
-    COMMAND ${CMAKE_COMMAND} -E echo "  show-help        - Show this help message"
-    COMMAND ${CMAKE_COMMAND} -E echo ""
-    if(VALGRIND_PROGRAM)
-        COMMAND ${CMAKE_COMMAND} -E echo "Memory check targets (Valgrind available):"
-        COMMAND ${CMAKE_COMMAND} -E echo "  memcheck-simple  - Run Simple test with Valgrind"
-        COMMAND ${CMAKE_COMMAND} -E echo "  memcheck-btree   - Run B+Tree test with Valgrind"
-        COMMAND ${CMAKE_COMMAND} -E echo "  memcheck-all     - Run all tests with Valgrind"
-        COMMAND ${CMAKE_COMMAND} -E echo ""
-    endif()
-    COMMAND ${CMAKE_COMMAND} -E echo "Build types:"
-    COMMAND ${CMAKE_COMMAND} -E echo "  -DCMAKE_BUILD_TYPE=Debug     - Debug build"
-    COMMAND ${CMAKE_COMMAND} -E echo "  -DCMAKE_BUILD_TYPE=Release   - Release build"
-    COMMAND ${CMAKE_COMMAND} -E echo ""
-    COMMAND ${CMAKE_COMMAND} -E echo "Quick start examples:"
-    COMMAND ${CMAKE_COMMAND} -E echo "  mkdir build && cd build"
-    COMMAND ${CMAKE_COMMAND} -E echo "  cmake .."
-    COMMAND ${CMAKE_COMMAND} -E echo "  make show-help          # Show this help"
-    COMMAND ${CMAKE_COMMAND} -E echo "  make run-simple         # Run simple test (start here)"
-    COMMAND ${CMAKE_COMMAND} -E echo "  make run-all-tests      # Run comprehensive tests"
-)

@@ -11,7 +11,7 @@ class SimpleBPlusTreeTester {
 
     // 计算每页最大键数
     static const int MAX_KEYS_PER_PAGE =
-        (PAGE_SIZE - 64) / (KEY_SIZE + ROW_ID_SIZE + VALUE_SIZE);
+        (PAGE_SIZE - sizeof(PageHeader)) / (KEY_SIZE + ROW_ID_SIZE + VALUE_SIZE);
 
     void printTestHeader(const std::string& testName) {
         std::cout << "\n" << std::string(50, '=') << std::endl;
