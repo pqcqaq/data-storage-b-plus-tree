@@ -1,0 +1,130 @@
+# Build directories
+build/
+cmake-build-*/
+out/
+.vs/
+.vscode/settings.json
+
+# Database files
+*.db
+*.idx
+*.schema
+
+# Database directories
+test_db/
+interactive_db/
+perf_db/
+data/
+
+# Specific test database files
+test.db
+performance_test.db
+stress_test.db
+memory_test.db
+simple_test.db
+split_test.db
+ordered_test.db
+edge_test.db
+debug.db
+split_debug.db
+struct_test_*.db
+
+# Log files
+*.log
+*.trace
+
+# Core dumps
+core.*
+core
+vgcore.*
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Compiled Object files
+*.o
+*.obj
+*.lo
+*.slo
+*.ko
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.lib
+*.lai
+*.la
+
+# Executables
+*.exe
+*.out
+*.app
+bplus_tree_test
+simple_test
+tree_test
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# IDE files
+.idea/
+*.swp
+*.swo
+*~
+.project
+.cproject
+.settings/
+
+# Valgrind output
+*.valgrind
+massif.out.*
+callgrind.out.*
+
+# Performance profiling
+gmon.out
+*.gcda
+*.gcno
+*.gcov
+
+# Doxygen documentation
+docs/html/
+docs/latex/
+Doxyfile.bak
+
+# Package files
+*.tar.gz
+*.zip
+*.rar
+*.7z
+
+# Editor temporary files
+.vscode/
+*.sublime-*
+.atom/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
